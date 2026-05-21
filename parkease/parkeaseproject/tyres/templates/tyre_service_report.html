@@ -1,0 +1,29 @@
+{% extends 'base.html' %} {% block title %}Tyre Service Report{% endblock %} {%
+block nav %} {% include 'tyre_nav.html' %} {% endblock %} {% block content %}
+<div class="container mt-4">
+  <h3>Tyre Service Report</h3>
+  <h5>Total Amount: {{ total_amount }}</h5>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Customer</th>
+        <th>Number Plate</th>
+        <th>Service</th>
+        <th>Fee</th>
+        <th>Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for service in services %}
+      <tr>
+        <td>{{ service.customer_name }}</td>
+        <td>{{ service.number_plate }}</td>
+        <td>{{ service.service_type }}</td>
+        <td>{{ service.service_fee }}</td>
+        <td>{{ service.date_time }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}

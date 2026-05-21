@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+ {% block title %}Tyre Service Receipt{% endblock %}
+{%block nav %} {% include 'tyre_nav.html' %} {% endblock %} {% block content %}
+<div class="container mt-4">
+  <h3>Tyre Service Receipt</h3>
+  <p><strong>Customer:</strong> {{ service.customer_name }}</p>
+  <p><strong>Number Plate:</strong> {{ service.number_plate }}</p>
+  <p><strong>Phone:</strong> {{ service.phone_number }}</p>
+  <p><strong>Tyre Size:</strong> {{ service.tyre_size }}</p>
+  <p><strong>Tyre Model:</strong> {{ service.tyre_model }}</p>
+  <p><strong>Service Type:</strong> {{ service.service_type }}</p>
+  <p><strong>Service Fee:</strong> {{ service.service_fee }}</p>
+  <p><strong>Date:</strong> {{ service.date_time }}</p>
+  <button onclick="window.print()" class="btn btn-dark">Print Receipt</button>
+</div>
+<a href="{% url 'tyre_service_list' %}" class="btn btn-secondary"
+  >Back to List</a
+>
+{% endblock %}
