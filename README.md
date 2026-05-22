@@ -1,18 +1,3 @@
-Admin
-Username-abgita
-Password: Asante@26
-
-service attendant
-Username- smirembe
-password- Mirembe@26found
-
-username-akizito
-password - Namiiro@26
-
-Parking attendant 
-username - bmusoki
-Password -brenda
-
 
 # ParkEase – Integrated Parking & Vehicle Services Management System
 
