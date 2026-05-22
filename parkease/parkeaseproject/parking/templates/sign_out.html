@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block title %}Sign Out Vehicle{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+
+<h3>Sign Out Vehicle</h3>
+
+    <div class="card p-3 mb-3">
+        <p><strong>Receipt Number:</strong> {{ parking.receipt_number }}</p>
+        <p><strong>Driver:</strong> {{ parking.driver_name }}</p>
+        <p><strong>Number Plate:</strong> {{ parking.number_plate }}</p>
+        <p><strong>Arrival Time:</strong> {{ parking.arrival_time }}</p>
+    </div>
+
+    <form method="POST">
+        {% csrf_token %}
+
+        {{ form.as_p }}
+
+        <button type="submit" class="btn btn-success">Sign Out</button>
+        <a href="{% url 'parking_list' %}" class="btn btn-secondary">Cancel</a>
+    </form>
+</div>
+{% endblock %}

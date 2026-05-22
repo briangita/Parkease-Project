@@ -1,10 +1,8 @@
 {% extends 'base.html' %}
 {% block title %}Tyre Service Form{% endblock %}
-{% block nav %}
-{% include 'tyre_nav.html' %}
-{% endblock %}
+
 {% block content %}
-    <h1>Tyre Service Form</h1>
+    <h3>Tyre Service Form</h3>
     <form method="post">
         {% csrf_token %}
         {{ form.as_p }}

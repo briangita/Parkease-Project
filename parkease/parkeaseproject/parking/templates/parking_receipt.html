@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block title %}Parking Receipt{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="card p-4">
+        <h3 class="text-center">Parking Receipt</h3>
+        <hr>
+
+        <p><strong>Receipt Number:</strong> {{ parking.receipt_number }}</p>
+        <p><strong>Driver Name:</strong> {{ parking.driver_name }}</p>
+        <p><strong>Vehicle Type:</strong> {{ parking.vehicle_type }}</p>
+        <p><strong>Number Plate:</strong> {{ parking.number_plate }}</p>
+        <p><strong>Vehicle Model:</strong> {{ parking.vehicle_model }}</p>
+        <p><strong>Vehicle Color:</strong> {{ parking.vehicle_color }}</p>
+        <p><strong>Phone Number:</strong> {{ parking.phone_number }}</p>
+        <p><strong>Arrival Time:</strong> {{ parking.arrival_time }}</p>
+
+        {% if parking.signed_out %}
+            <hr>
+            <p><strong>Receiver Name:</strong> {{ parking.receiver_name }}</p>
+            <p><strong>Receiver Phone:</strong> {{ parking.receiver_phone }}</p>
+            <p><strong>Receiver Gender:</strong> {{ parking.receiver_gender }}</p>
+            <p><strong>Receiver NIN:</strong> {{ parking.receiver_nin }}</p>
+            <p><strong>Exit Time:</strong> {{ parking.exit_time }}</p>
+            <p><strong>Parking Fee:</strong> UGX {{ parking.parking_fee }}</p>
+        {% else %}
+            <p><strong>Status:</strong> Vehicle still parked</p>
+        {% endif %}
+
+        <div class="mt-3 no-print">
+            <button onclick="window.print()" class="btn btn-dark">Print Receipt</button>
+            <a href="{% url 'parking_list' %}" class="btn btn-secondary">Back</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

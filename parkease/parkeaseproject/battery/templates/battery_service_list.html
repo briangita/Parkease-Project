@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% block title %}Battery Service List{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+
+    <div class="d-flex justify-content-between mb-3">
+        <a href="{% url 'battery_service_form' %}" class="btn btn-primary">Add Battery Service</a>
+         <a href="{% url 'battery_report' %}" class="btn btn-primary">Battery Service Report</a>
+    </div>
+
+    <h3>Battery Service List</h3>
+
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>Customer</th>
+                <th>Phone</th>
+                <th>Number Plate</th>
+                <th>Service Type</th>
+                <th>Battery Type</th>
+                <th>Fee</th>
+                <th>Date</th>
+                <th>Receipt</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for service in services %}
+            <tr>
+                <td>{{ service.customer_name }}</td>
+                <td>{{ service.phone_number }}</td>
+                <td>{{ service.number_plate }}</td>
+                <td>{{ service.service_type }}</td>
+                <td>{{ service.battery_type }}</td>
+                <td>{{ service.service_fee }}</td>
+                <td>{{ service.date_time }}</td>
+                <td>
+                    <a href="{% url 'battery_receipt' service.id %}" class="btn btn-sm btn-success">Receipt</a>
+                </td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="8">No battery services recorded yet.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

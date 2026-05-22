@@ -1,9 +1,14 @@
 {% extends 'base.html' %}
 {% block title %}Tyre Service List{% endblock %}
-{% block nav %}
-{% include 'tyre_nav.html' %}
-{% endblock %}
+
 {% block content %}
+<div class="container mt-4">
+<div class="d-flex justify-content-between mb-3">
+        <a href="{% url 'tyre_service_form' %}" class="btn btn-primary">Add Tyre Service</a>
+        <a href="{% url 'tyre_service_report' %}" class="btn btn-primary">Tyre Service Report</a>
+    </div>
+
+    <h3>Tyre Service List</h3>
     <table class="table table-bordered table-striped">
          <thead>
              <tr>

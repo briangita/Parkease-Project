@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+{% block title %}Parking List{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="d-flex justify-content-between mb-3">
+        <a href="{% url 'parking_form' %}" class="btn btn-primary">Add Vehicle</a>
+          <a href="{% url 'parking_report' %}" class="btn btn-primary">Parking Report</a>
+    </div>
+        <h3>Parking List</h3>
+
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>Driver</th>
+                <th>Vehicle</th>
+                <th>Plate</th>
+                <th>Phone</th>
+                <th>Receipt</th>
+                <th>Status</th>
+                <th> Arrival time</th>
+                <th>Fee</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for parking in parkings %}
+            <tr>
+                <td>{{ parking.driver_name }}</td>
+                <td>{{ parking.vehicle_type }}</td>
+                <td>{{ parking.number_plate }}</td>
+                <td>{{ parking.phone_number }}</td>
+                <td>{{ parking.receipt_number }}</td>
+                <td>
+                    {% if parking.signed_out %}
+                        <span class="badge bg-success">Signed Out</span>
+                    {% else %}
+                        <span class="badge bg-warning text-dark">Parked</span>
+                    {% endif %}
+                </td>
+                <td>{{ parking.arrival_time }}</td>
+                <td>{{ parking.parking_fee }}</td>
+                <td>
+                    <a href="{% url 'parking_receipt' parking.id %}" class="btn btn-sm btn-info">Receipt</a>
+                    <a href="{% url 'parking_edit' parking.id %}" class="btn btn-sm btn-warning">Edit</a>
+
+                    {% if not parking.signed_out %}
+                        <a href="{% url 'sign_out_parking' parking.id %}" class="btn btn-sm btn-success">Sign Out</a>
+                    {% endif %}
+
+                    <a href="{% url 'parking_delete' parking.id %}" class="btn btn-sm btn-danger">Delete</a>
+                </td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="9">No parking records found.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

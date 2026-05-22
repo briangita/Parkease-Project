@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block title %}Battery Service Receipt{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h3>Battery Receipt</h3>
+
+    <p><strong>Customer:</strong> {{ service.customer_name }}</p>
+    <p><strong>Phone:</strong> {{ service.phone_number }}</p>
+    <p><strong>Number Plate:</strong> {{ service.number_plate }}</p>
+    <p><strong>Service Type:</strong> {{ service.service_type }}</p>
+    <p><strong>Battery Type:</strong> {{ service.battery_type }}</p>
+    <p><strong>Service Fee:</strong> {{ service.service_fee }}</p>
+    <p><strong>Date:</strong> {{ service.date_time }}</p>
+
+    <button onclick="window.print()" class="btn btn-dark">Print Receipt</button>
+</div>
+{% endblock %}
