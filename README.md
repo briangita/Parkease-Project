@@ -1,6 +1,4 @@
 
-
-
 # ParkEase – Integrated Parking & Vehicle Services Management System
 
 ## Project Overview
