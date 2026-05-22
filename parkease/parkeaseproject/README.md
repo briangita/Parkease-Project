@@ -1,6 +1,4 @@
-Admin-abgita
-Email address: briangita63@gmail.com
-Password: Asante@26
+
 
 
 # ParkEase – Integrated Parking & Vehicle Services Management System
