@@ -2,6 +2,8 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.models import Group
 from django.contrib import messages
 from .forms import UserRegisterForm
+from django.contrib.auth.views import LoginView
+from django.urls import reverse_lazy
 
 
 # Create your views here.
@@ -35,3 +37,22 @@ def register(request):
         form = UserRegisterForm()
 
     return render(request, 'registration/register.html', {'form': form})
+
+class CustomLoginView(LoginView):
+
+    template_name = 'registration/login.html'
+
+    def get_success_url(self):
+        user = self.request.user
+
+        if user.is_superuser or user.groups.filter(name='admin').exists():
+            return reverse_lazy('parking_list')
+
+        if user.groups.filter(name='parking_attendant').exists():
+            return reverse_lazy('parking_list')
+
+        if user.groups.filter(name='section_manager').exists():
+            return reverse_lazy('tyre_service_list')
+
+        return reverse_lazy('login')
+
