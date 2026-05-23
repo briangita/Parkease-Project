@@ -75,17 +75,29 @@ def sign_out_parking(request, pk):
 @login_required
 @admin_required
 def parking_report(request):
-    today = timezone.now().date()
 
-    parkings = Parking.objects.filter(
-        signed_out=True,
-        exit_time__date=today
-    ).order_by("-exit_time")
+    parkings = Parking.objects.filter(signed_out=True)
 
-    total_revenue = parkings.aggregate(total=Sum("parking_fee"))["total"] or 0
+    start_date = request.GET.get("start_date")
+    end_date = request.GET.get("end_date")
 
-    return render(request, "parking_report.html", {
+    if start_date and end_date:
+
+        parkings = parkings.filter(
+            exit_time__date__range=[start_date, end_date]
+        )
+
+    parkings = parkings.order_by("-exit_time")
+
+    total_revenue = parkings.aggregate(
+        total=Sum("parking_fee")
+    )["total"] or 0
+
+    context = {
         "parkings": parkings,
         "total_revenue": total_revenue,
-        "today": today,
-    })
+        "start_date": start_date,
+        "end_date": end_date,
+    }
+
+    return render(request, "parking_report.html", context)

@@ -34,7 +34,7 @@ def battery_report(request):
     services = BatteryService.objects.all().order_by("-date_time")
     total_amount = BatteryService.objects.aggregate(total=Sum("service_fee"))["total"] or 0
 
-    return render(request, "battery_report.html", {
+    return render(request, "battery_service_report.html", {
         "services": services,
         "total_amount": total_amount,
     })
