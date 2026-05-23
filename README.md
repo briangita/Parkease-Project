@@ -23,7 +23,7 @@ The Parking Management module is the core module of ParkEase.
 - Vehicle sign-out management
 - Daily parking reports
 - Parking receipt printing
-- Vehicle tracking
+- Vehicle parking time tracking
 
 ### Captured Information
 
@@ -69,7 +69,6 @@ The Tyre Clinic module manages tyre-related services provided within the parking
 - Manage tyre service pricing
 - Generate service receipts
 - Service reporting
-- Dashboard summaries
 
 ### Supported Services
 
@@ -102,7 +101,6 @@ The Battery module manages battery hiring and battery sales operations.
 - Battery sales management
 - Service fee management
 - Battery transaction reports
-- Dashboard summaries
 
 ### Captured Information
 
@@ -181,7 +179,7 @@ The system validates data on both frontend and backend.
 - Number plates must:
   - start with `U`
   - be alphanumeric
-  - be less than 6 characters
+  - be less than 7 characters
 - Ugandan phone number validation
 - NIN validation
 - Required field validation
